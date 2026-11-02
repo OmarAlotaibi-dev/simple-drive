@@ -3,7 +3,7 @@ name: CI
 on:
   pull_request:
   push:
-    branches: [ master ]
+    branches: [ main ]
 
 jobs:
   scan_ruby:
@@ -19,10 +19,10 @@ jobs:
           bundler-cache: true
 
       - name: Scan for common Rails security vulnerabilities using static analysis
-        run: bin/brakeman --no-pager
+        run: ruby bin/brakeman --no-pager
       
       - name: Scan for known security vulnerabilities in gems used
-        run: bin/bundler-audit
+        run: ruby bin/bundler-audit
       
   lint:
     runs-on: ubuntu-latest
@@ -48,7 +48,7 @@ jobs:
             rubocop-${{ runner.os }}-${{ env.DEPENDENCIES_HASH }}-
 
       - name: Lint code for consistent style
-        run: bin/rubocop -f github
+        run: ruby bin/rubocop -f github
 
   test:
     runs-on: ubuntu-latest
@@ -76,4 +76,4 @@ jobs:
           RAILS_ENV: test
           # RAILS_MASTER_KEY: ${{ secrets.RAILS_MASTER_KEY }}
           # REDIS_URL: redis://localhost:6379/0
-        run: bin/rails db:test:prepare test
+        run: ruby bin/rails db:test:prepare test
