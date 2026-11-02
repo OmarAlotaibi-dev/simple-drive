@@ -77,7 +77,7 @@ class V1::BlobsControllerTest < ActionDispatch::IntegrationTest
   end
 
   test "preserves binary data" do
-    binary = [0, 1, 127, 128, 255].pack("C*")
+    binary = [ 0, 1, 127, 128, 255 ].pack("C*")
     encoded = Base64.strict_encode64(binary)
 
     post "/v1/blobs",

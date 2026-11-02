@@ -6,7 +6,7 @@ class Storage::LocalTest < ActiveSupport::TestCase
   test "writes and reads binary data" do
     Dir.mktmpdir do |directory|
       storage = Storage::Local.new(directory: directory)
-      binary = [0, 1, 127, 128, 255].pack("C*")
+      binary = [ 0, 1, 127, 128, 255 ].pack("C*")
 
       storage.write("local-binary-test", binary)
 

@@ -18,7 +18,7 @@ class Storage::S3Test < ActiveSupport::TestCase
   end
 
   test "writes and reads binary data through HTTP" do
-    binary = [0, 1, 127, 128, 255].pack("C*")
+    binary = [ 0, 1, 127, 128, 255 ].pack("C*")
     requests = []
 
     fake_http = Object.new

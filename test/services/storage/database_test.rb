@@ -4,7 +4,7 @@ require "test_helper"
 class Storage::DatabaseTest < ActiveSupport::TestCase
   test "writes and reads binary data" do
     storage = Storage::Database.new
-    binary = [0, 1, 127, 128, 255].pack("C*")
+    binary = [ 0, 1, 127, 128, 255 ].pack("C*")
 
     storage.write("database-binary-test", binary)
 

@@ -91,7 +91,7 @@ module Storage
 
  unless response.is_a?(Net::HTTPSuccess)
   raise "S3 request failed: HTTP #{response.code} - #{response.body}"
-end
+ end
 
       response.body
     end
@@ -99,11 +99,11 @@ end
     def object_uri(id)
       encoded_id = id.b.bytes.map do |byte|
   if byte.between?(65, 90) || byte.between?(97, 122) ||
-   byte.between?(48, 57) || [45, 46, 47, 95, 126].include?(byte)
+   byte.between?(48, 57) || [ 45, 46, 47, 95, 126 ].include?(byte)
           byte.chr
-        else
+  else
           "%%%02X" % byte
-        end
+  end
       end.join
 
       uri = @endpoint.dup

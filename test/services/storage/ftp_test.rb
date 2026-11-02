@@ -24,7 +24,7 @@ class Storage::FtpTest < ActiveSupport::TestCase
       directory: "/"
     )
 
-    binary = [0, 1, 127, 128, 255].pack("C*")
+    binary = [ 0, 1, 127, 128, 255 ].pack("C*")
     uploaded = nil
 
     fake_ftp = Object.new

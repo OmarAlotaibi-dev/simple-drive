@@ -23,7 +23,7 @@ module Storage
           secret_key: ENV.fetch("S3_SECRET_KEY")
         )
 
-when "ftp"
+      when "ftp"
   Storage::Ftp.new(
     host: ENV.fetch("FTP_HOST"),
     username: ENV.fetch("FTP_USERNAME"),
